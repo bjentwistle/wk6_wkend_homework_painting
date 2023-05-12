@@ -1,0 +1,14 @@
+{
+  "name": "painter_project",
+  "version": "1.0.0",
+  "description": "Painting rooms with a decorator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha specs"
+  },
+  "author": "Becky",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  }
+}
