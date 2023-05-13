@@ -20,8 +20,7 @@ describe(`Decorator`, function () {
     beforeEach(function() {
         paintWhite = new PaintCan(5,true)
         paintBlue = new PaintCan(10,true)
-        paintYellow = new PaintCan(5,true)
-        paintGreen = new PaintCan(5,true)
+        paintYellow = new PaintCan(15,true)
         paintRed = new PaintCan(5,true)
         paintBlack = new PaintCan(20,true)
 
@@ -29,7 +28,7 @@ describe(`Decorator`, function () {
         room2 = new Room(25)
         room3 = new Room(20)
 
-        paints = [paintWhite, paintBlue, paintYellow, paintGreen,paintRed, paintBlack]
+        paints = [paintWhite, paintBlue, paintYellow]
         decorator = new Decorator([])
 
     });
@@ -65,6 +64,18 @@ describe(`Decorator`, function () {
         const expected = true //room.paintedStatus will be true
         assert.strictEqual(actual, expected)
     });
+    
+    //Extensions
+
+    it('should be able to decrease amount of paint in stock when painting a room', function(){
+        const actual = decorator.paintARoomAndReduceStock(room2, paints);
+        const expected = (true, 5)  //room.paintedStatus will be true and remaining stock will be 5
+        assert.strictEqual(actual, expected)
+    });
+
+    xit('should be able to remove empty paint cans from stock', function(){
+
+    })
 
 }); //end of describe.
 

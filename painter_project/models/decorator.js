@@ -40,6 +40,34 @@ Decorator.prototype.paintARoom = function(aRoom) {
     } else {
         return aRoom.isPainted = false
     }
+    
 };
+
+//Extensions
+
+Decorator.prototype.paintARoomAndReduceStock = function(aRoom, paintList) {
+    const areaToPaint = aRoom.area
+    for (can of paintList) {
+        this.stockList.push(can)
+    }
+
+    let paintCanLitres =[]
+    for (paintCan of this.stockList) {
+        paintCanLitres = this.stockList.map(paintCan => paintCan.numOfLitres) 
+    };
+
+    const paintInStock = paintCanLitres.reduce((total, currentValue) => {return total += currentValue;}, 0)
+
+    if (paintInStock >= areaToPaint){
+        const paintRemaining = paintInStock - areaToPaint;
+        aRoom.isPainted = true
+        return (true, paintRemaining)   //expected output
+
+    } else {
+        return (false, paintInStock)
+    }
+};
+
+
 
 module.exports = Decorator;
