@@ -61,13 +61,22 @@ Decorator.prototype.paintARoomAndReduceStock = function(aRoom, paintList) {
     if (paintInStock >= areaToPaint){
         const paintRemaining = paintInStock - areaToPaint;
         aRoom.isPainted = true
-        return (true, paintRemaining)   //expected output
+        return [true, paintRemaining]   //expected output
 
     } else {
-        return (false, paintInStock)
+        return [false, paintInStock]
     }
 };
 
-
+Decorator.prototype.removeEmptyCansFromStockList = function(paintList) {
+    for (can of paintList) {
+        this.stockList.push(can)
+        //console.log(this.stockList)
+    }// end of first  forloop
+    for (eachCan of this.stockList) {
+            nonEmptyCansInStock = this.stockList.filter(eachCan => eachCan.isFull !== false) 
+    }// end of second forloop
+    return nonEmptyCansInStock
+};
 
 module.exports = Decorator;

@@ -23,16 +23,17 @@ describe(`Decorator`, function () {
         paintYellow = new PaintCan(15,true)
         paintRed = new PaintCan(5,true)
         paintBlack = new PaintCan(20,true)
+        paintGreen = new PaintCan(0, false)
+        paintPink = new PaintCan(0, false)
 
         room1 = new Room(16)
         room2 = new Room(25)
         room3 = new Room(20)
 
-        paints = [paintWhite, paintBlue, paintYellow]
+        paints = [paintWhite, paintBlue, paintYellow, paintGreen, paintPink]
         decorator = new Decorator([])
 
     });
-
 
     it('should be able to add paint to stockList', function() { 
         const actual = decorator.addPaintToStockList(paintWhite);
@@ -69,12 +70,15 @@ describe(`Decorator`, function () {
 
     it('should be able to decrease amount of paint in stock when painting a room', function(){
         const actual = decorator.paintARoomAndReduceStock(room2, paints);
-        const expected = (true, 5)  //room.paintedStatus will be true and remaining stock will be 5
-        assert.strictEqual(actual, expected)
+        //console.log (actual)
+        const expected = [true, 5]  //room.paintedStatus will be true and remaining stock will be 5
+        assert.deepStrictEqual(actual, expected)
     });
 
-    xit('should be able to remove empty paint cans from stock', function(){
-
+    it('should be able to remove empty paint cans from stock', function(){
+        const actual = decorator.removeEmptyCansFromStockList(paints)
+        const expected = [paintWhite, paintBlue, paintYellow]
+        assert.deepStrictEqual(actual, expected)
     })
 
 }); //end of describe.
