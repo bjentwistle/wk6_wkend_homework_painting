@@ -36,9 +36,9 @@ Decorator.prototype.paintARoom = function(aRoom) {
     const areaToPaint = aRoom.area
     const paintInStock = this.totalPaintInStockList()
     if (paintInStock >= areaToPaint){
-        return aRoom.paintedStatus = true
+        return aRoom.isPainted = true
     } else {
-        return aRoom.paintedStatus = false
+        return aRoom.isPainted = false
     }
 };
 

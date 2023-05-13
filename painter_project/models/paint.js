@@ -1,20 +1,19 @@
 // Set up PaintCan Object
-const PaintCan = function(numOfLitres, fullStatus = false) {
+const PaintCan = function(numOfLitres, isFull = false) {
     this.numOfLitres = numOfLitres;
-    this.fullStatus = fullStatus;
+    this.isFull = isFull;
 };
 
 
-// PaintCan.prototype.checkIfEmpty = function() {
-//     if (this.fullStatus === false) {
-//         return this.fullStatus
-//     }
+PaintCan.prototype.checkIsNotFull = function() {
+    if( this.numOfLitres === 0  && this.isFull === true); {
+        return this.isFull
+    }
 
-// };
+};
 
-// PaintCan.prototype.removePaint =function (litres) {
-
-
-// };
+PaintCan.prototype.removePaint = function (litres) {
+    return this.numOfLitres - litres
+};
 
 module.exports = PaintCan;

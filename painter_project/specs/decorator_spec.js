@@ -66,5 +66,5 @@ describe(`Decorator`, function () {
         assert.strictEqual(actual, expected)
     });
 
-});
+}); //end of describe.
 
