@@ -36,13 +36,12 @@ describe(`Decorator`, function () {
 
 
     it('should be able to add paint to stockList', function() { 
-        console.log(this.paintWhite)
-        const actual = decorator.addPaintToStockList(this.paintWhite);
-        const expected = 5
+        const actual = decorator.addPaintToStockList(paintWhite);
+        const expected = 5 //[paintWhite]
         assert.deepStrictEqual(actual, expected)
     });
 
-    xit('should be able to add paint to calculate total amount of paint in stockList', function(){
+    it('should be able to add paint to calculate total amount of paint in stockList', function(){
         decorator.addPaintToStockList(paintBlack);
         decorator.addPaintToStockList(paintWhite);
         decorator.addPaintToStockList(paintRed);
@@ -51,14 +50,18 @@ describe(`Decorator`, function () {
         assert.strictEqual(actual, expected)
     });
 
-    xit('should be able to check if it has enough paint for a room', function(){
-        const actual = decorator.enoughToPaintARoom(room1, paints);
-        const expected = True
+    it('should be able to check if it has enough paint for a room', function(){
+        //room1 has 16 square meters of wall to be painted
+        decorator.addPaintToStockList(paintBlack);
+        const actual = decorator.enoughToPaintARoom(room1);
+        const expected = true
         assert.strictEqual(actual, expected)
     });
 
-    xit('should be able to add paint a room if enough paint in stock', function(){
-        const actual = decorator.paintRoom(room2);
+    it('should be able to add paint a room if enough paint in stock', function(){
+        decorator.addPaintToStockList(paintBlue);
+        decorator.addPaintToStockList(paintBlue);
+        const actual = decorator.paintARoom(room3);
         const expected = true //room.paintedStatus will be true
         assert.strictEqual(actual, expected)
     });

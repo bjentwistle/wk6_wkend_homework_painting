@@ -5,27 +5,41 @@ const Decorator = function(stockList) {
 };
 
 Decorator.prototype.addPaintToStockList = function(paintCan) {
-    console.log(paintCan)
-    const count= this.stockList.push(paintCan)
-    console.log(count)
-    return this.stockList.paintCan[numOfLitres]
+    //console.log(paintCan)
+    this.stockList.push(paintCan)
+    //console.log(this.stockList)
+    return this.stockList[0].numOfLitres
 };
 
-// Decorator.prototype.totalPaintInStockList = function() {
-//     console.log(this.stockList)
-//     const paintCanLitres = this.stockList.map(paintCan=> paintCan.numOfLitres)
-//     const totalPaintInStock = this.paintCanLitres.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-//     return totalPaintInStock
-// };
+Decorator.prototype.totalPaintInStockList = function() {
+    let paintCanLitres =[]
+    for (paintCan of this.stockList) {
+        paintCanLitres = this.stockList.map(paintCan => paintCan.numOfLitres) 
+    };
+    return paintCanLitres.reduce((total, currentValue) => {return total += currentValue;}, 0)
+};
 
-// Decorator.prototype.calculateEnoughPaintForRoom = function(aRoom) {
+Decorator.prototype.enoughToPaintARoom = function(aRoom) {
+    const areaToPaint = aRoom.area
+    //console.log(areaToPaint)
+    const paintInStock = this.stockList[0].numOfLitres
+    //console.log(paintInStock)
+    if (paintInStock >= areaToPaint){
+        return true
+    } else {
+        return false
+    }
 
+};
 
-// };
-
-// Decorator.prototype.paintARoom = function(roomToPaint) {
-
-
-// };
+Decorator.prototype.paintARoom = function(aRoom) {
+    const areaToPaint = aRoom.area
+    const paintInStock = this.totalPaintInStockList()
+    if (paintInStock >= areaToPaint){
+        return aRoom.paintedStatus = true
+    } else {
+        return aRoom.paintedStatus = false
+    }
+};
 
 module.exports = Decorator;
