@@ -8,7 +8,7 @@ describe('PangramFinder', function () {
     assert.strictEqual(actual, true);
   });
 
-  xit('should be able to detect a non-pangram', function () {
+  it('should be able to detect a non-pangram', function () {
     const pangramFinder = new PangramFinder('this is not a pangram so the result should be false');
     assert.strictEqual(pangramFinder.isPangram(), false);
   });
